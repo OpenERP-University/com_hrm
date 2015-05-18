@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL"
+                    description="JFIELD_ACCESS_DESC" size="1" />
+        <field name="id" type="text" default="0" label="COM_HRM_FORM_LBL_COEFFICIENT_ID"
+               readonly="true" class="readonly"
+               description="JGLOBAL_FIELD_ID_DESC" /> 
+
+        <field name="created_by" type="createdby" default="" 
+               label="COM_HRM_FORM_LBL_COEFFICIENT_CREATED_BY"
+               description="COM_HRM_FORM_DESC_COEFFICIENT_CREATED_BY"  /> 
+
+        <field name="guid" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_COEFFICIENT_GUID"
+               description="COM_HRM_FORM_DESC_COEFFICIENT_GUID" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+        <field name="user_id" type="text" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_USER_ID"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_USER_ID" input_type="list" /> 
+
+        <field name="filter_user_id" type="sql" class="inputbox"
+               onchange="this.form.submit();" translate="true"
+               query="SELECT 0 AS `id`, 'COM_HRM_EMPLOYEES_USER_ID_FILTER_DEFAULT_OPTION' AS `val` UNION SELECT `id`, `username` AS val FROM `#__users`" key_field="id" value_field="val"
+        /> 
+
+        <field name="scale_group_guid" type="foreignkey" class="inputbox"
+               label="COM_HRM_FORM_LBL_COEFFICIENT_SCALE_GROUP_GUID"
+               description="COM_HRM_FORM_DESC_SCALE_GROUP_SCALE_GROUP_GUID" input_type="list" table="#__hrm_scale_group" table_check ="#__hrm_scale_type" key_field="guid" key_field_check="scale_group_guid" special_guid="78DE559D-4A49-4283-A090-03DC0B46E0DE" value_field="title"  /> 
+
+        <field name="filter_scale_group_guid" type="sql" class="inputbox"
+               onchange="this.form.submit();" translate="true"
+               query="SELECT 0 AS `guid`, 'COM_HRM_COEFFICIENTS_SCALE_GROUP_GUID_FILTER_DEFAULT_OPTION' AS `title` UNION SELECT `guid`, `title` AS val FROM `#__hrm_scale_group`" key_field="guid" value_field="title"
+        /> 
+
+        <field name="wage_guid" type="foreignkey" class="inputbox"
+               label="COM_HRM_FORM_LBL_COEFFICIENT_WAGE_GUID"
+               description="COM_HRM_FORM_DESC_COEFFICIENT_WAGE_GUID" input_type="list" table="#__hrm_wage" key_field="guid" value_field="title"  required="true"  /> 
+
+        <field name="filter_wage_guid" type="sql" class="inputbox"
+               onchange="this.form.submit();" translate="true"
+               query="SELECT 0 AS `guid`, 'COM_HRM_COEFFICIENTS_WAGE_GUID_FILTER_DEFAULT_OPTION' AS `title` UNION SELECT `guid`, `title` AS val FROM `#__hrm_wage`" key_field="guid" value_field="title"
+        /> 
+
+        <field name="coefficient" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_COEFFICIENT_COEFFICIENT"
+               description="COM_HRM_FORM_DESC_COEFFICIENT_COEFFICIENT" 
+                                                    
+                                                    
+               required="true" 
+               filter="safehtml" /> 
+
+        <field
+            name="state"
+            type="list"
+            label="JSTATUS"
+            description="JFIELD_PUBLISHED_DESC"
+            class="inputbox"
+            size="1"
+            default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+            <option value="2">JARCHIVED</option>
+            <option value="-2">JTRASHED</option>
+        </field> 
+
+        <field name="checked_out" type="hidden" filter="unset" />
+        <field name="checked_out_time" type="hidden" filter="unset" /> 
+
+    </fieldset> 
+
+    <fieldset 
+        name="accesscontrol">
+        <field name="asset_id" type="hidden" filter="unset" />
+        <field name="rules"
+               type="rules"
+               label="JFIELD_RULES_LABEL"
+               translate_label="false"
+               filter="rules"
+               validate="rules"
+               class="inputbox"
+               component="com_hrm"
+               section="coefficient"
+        />
+
+    </fieldset>
+
+</form>

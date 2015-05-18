@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+
+        <field name="id" type="text" default="0" label="COM_HRM_FORM_LBL_EMPLOYEE_ID"
+               readonly="true" class="readonly"
+               description="JGLOBAL_FIELD_ID_DESC" /> 
+        <field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL"
+               description="JFIELD_ACCESS_DESC" size="1" />
+        <field name="guid" type="text" size="40" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_GUID"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_GUID"                
+               filter="safehtml" /> 
+
+        <field name="created_by" type="createdby" default="" 
+               label="COM_HRM_FORM_LBL_EMPLOYEE_CREATED_BY"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_CREATED_BY"  /> 
+
+        <field name="firstname" type="text" size="40" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_FIRSTNAME"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_FIRSTNAME"                
+               required="true" 
+               filter="safehtml" /> 
+
+        <field name="lastname" type="text" size="40" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_LASTNAME"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_LASTNAME"             
+               required="true" 
+               filter="safehtml" /> 
+
+        <field name="fullname" type="text" size="40" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_FULLNAME"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_FULLNAME" 
+               filter="safehtml" /> 
+
+        <field name="user_id" type="text" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_USER_ID"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_USER_ID" input_type="list" /> 
+
+        <field name="filter_user_id" type="sql" class="inputbox"
+               onchange="this.form.submit();" translate="true"
+               query="SELECT 0 AS `id`, 'COM_HRM_EMPLOYEES_USER_ID_FILTER_DEFAULT_OPTION' AS `val` UNION SELECT `id`, `username` AS val FROM `#__users`" key_field="id" value_field="val"
+        /> 
+
+        <field name="other_name" type="text" size="40" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_OTHER_NAME"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_OTHER_NAME"                          
+               filter="safehtml" /> 
+
+        <field name="date_of_birth" type="calendar" class="inputbox"
+               required="true" 
+               default="0000-00-00" 
+               label="COM_HRM_FORM_LBL_EMPLOYEE_DATE_OF_BIRTH"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_DATE_OF_BIRTH" 
+               filter="safehtml" /> 
+        <field name="gender" type="list"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_GENDER"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_GENDER" 
+               required="true" 
+               option_on="Yes"
+               option_off="Yes">
+            <option value="1">Nam</option>
+            <option value="2">Nữ</option>
+            <option value="3">Khác</option>
+        </field> 
+
+        <field name="place_of_birth" type="text" size="40" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_PLACE_OF_BIRTH"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_PLACE_OF_BIRTH"                     
+               filter="safehtml" /> 
+
+        <field name="hometown" type="text" size="40" class="inputbox"
+               label="COM_HRM_FORM_LBL_EMPLOYEE_HOMETOWN"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_HOMETOWN"                  
+               filter="safehtml" /> 
+        
+        <field name="department_guid" type="foreignkey" class="inputbox"
+               label="COM_HRM_FORM_LBL_DEPARTMENT_DEPARTMENT_GUID"
+               description="COM_HRM_FORM_DESC_DEPARTMENT_DEPARTMENT_GUID" input_type="list" table="#__hrm_departments" key_field="guid" value_field="title"  /> 
+
+        <field name="filter_department_guid" type="sql" class="inputbox"
+               onchange="this.form.submit();" translate="true"
+               query="SELECT 0 AS `guid`, 'COM_HRM_DEPARTMENTS_DEPARTMENT_GUID_FILTER_DEFAULT_OPTION' AS `val` UNION SELECT `guid`, `title` AS val FROM `#__hrm_departments`" key_field="guid" value_field="val"
+        /> 
+
+        <field name="ethnic" type="list"
+                
+               label="COM_HRM_FORM_LBL_EMPLOYEE_ETHNIC"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_ETHNIC" 
+                
+                
+                
+               menu_published="0"
+               filter="raw"
+               option_on="Yes"
+               option_off="Yes">
+            <option value="1">Kinh</option>
+            <option value="2">Chứt</option>
+            <option value="3">Mường</option>
+            <option value="4">Thổ</option>
+            <option value="5">Bố Y</option>
+            <option value="6">Giáy</option>
+            <option value="7">Lào</option>
+            <option value="8">Lự</option>
+            <option value="9">Nùng</option>
+            <option value="10">Sán Chay</option>
+            <option value="11">Tày</option>
+            <option value="12">Thái</option>
+            <option value="13">Ba Na</option>
+            <option value="14">Brâu</option>
+            <option value="15">Bru - Vân Kiều</option>
+            <option value="16">Chơ Ro</option>
+            <option value="17">Co</option>
+            <option value="18">Cơ Ho</option>
+            <option value="19">Cơ Tu</option>
+            <option value="20">Giẻ Triêng</option>
+            <option value="21">Hrê</option>
+            <option value="22">Kháng</option>
+            <option value="23">Khmer</option>
+            <option value="24">Khơ Mú</option>
+            <option value="25">Mạ</option>
+            <option value="26">Mảng</option>
+            <option value="27">M'Nông</option>
+            <option value="28">Ơ Đu</option>
+            <option value="29">Rơ Măm</option>
+            <option value="30">Tà Ôi</option>
+            <option value="31">Xinh Mun</option>
+            <option value="32">Xơ Đăng</option>
+            <option value="33">X'Tiêng</option>
+            <option value="34">Dao</option>
+            <option value="35">H'Mông</option>
+            <option value="36">Pà Thẻn</option>
+            <option value="37">Cờ Lao</option>
+            <option value="38">La Chí</option>
+            <option value="39">La Ha</option>
+            <option value="40">Pu Péo</option>
+            <option value="41">Chăm</option>
+            <option value="42">Chu Ru</option>
+            <option value="43">Ê Đê</option>
+            <option value="44">Gia Rai</option>
+            <option value="45">Ra Glay</option>
+            <option value="46">Hoa</option>
+            <option value="47">Ngái</option>
+            <option value="48">Sán Dìu</option>
+            <option value="49">Cống</option>
+            <option value="50">Hà Nhì</option>
+            <option value="51">La Hủ</option>
+            <option value="52">Lô Lô</option>
+            <option value="53">Phù Lá</option>
+            <option value="54">Si La</option>
+        </field> 
+
+        <field name="religion" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_RELIGION"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_RELIGION" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="address" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_ADDRESS"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_ADDRESS" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="current_residence" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_CURRENT_RESIDENCE"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_CURRENT_RESIDENCE" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="profession" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_PROFESSION"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_PROFESSION" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="date_of_recruitment" type="calendar" class="inputbox"
+        
+        
+               default="0000-00-00" 
+        
+               label="COM_HRM_FORM_LBL_EMPLOYEE_DATE_OF_RECRUITMENT"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_DATE_OF_RECRUITMENT" 
+               filter="safehtml" /> 
+
+        <field name="main_job" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_MAIN_JOB"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_MAIN_JOB" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="level_of_general_education" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_LEVEL_OF_GENERAL_EDUCATION"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_LEVEL_OF_GENERAL_EDUCATION" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="highest_qualification" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_HIGHEST_QUALIFICATION"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_HIGHEST_QUALIFICATION" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="identity_card_number" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_IDENTITY_CARD_NUMBER"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_IDENTITY_CARD_NUMBER" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="date_of_issue" type="calendar" class="inputbox"
+        
+        
+               default="0000-00-00" 
+        
+               label="COM_HRM_FORM_LBL_EMPLOYEE_DATE_OF_ISSUE"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_DATE_OF_ISSUE" 
+               filter="safehtml" /> 
+
+        <field name="political_theory" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_POLITICAL_THEORY"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_POLITICAL_THEORY" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="state_management" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_STATE_MANAGEMENT"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_STATE_MANAGEMENT" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="language_employee" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_LANGUAGE"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_LANGUAGE" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="informatic" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_INFORMATIC"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_INFORMATIC" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="day_at_party" type="calendar" class="inputbox"
+        
+        
+               default="0000-00-00" 
+        
+               label="COM_HRM_FORM_LBL_EMPLOYEE_DAY_AT_PARTY"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_DAY_AT_PARTY" 
+               filter="safehtml" /> 
+
+        <field name="date_official" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_DATE_OFFICIAL"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_DATE_OFFICIAL" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="day_join_pos" type="calendar" class="inputbox"
+        
+        
+               default="0000-00-00" 
+        
+               label="COM_HRM_FORM_LBL_EMPLOYEE_DAY_JOIN_POS"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_DAY_JOIN_POS" 
+               filter="safehtml" /> 
+
+        <field name="date_of_enlistment" type="calendar" class="inputbox"
+        
+        
+               default="0000-00-00" 
+        
+               label="COM_HRM_FORM_LBL_EMPLOYEE_DATE_OF_ENLISTMENT"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_DATE_OF_ENLISTMENT" 
+               filter="safehtml" /> 
+
+        <field name="demobilization_date" type="calendar" class="inputbox"
+        
+        
+               default="0000-00-00" 
+        
+               label="COM_HRM_FORM_LBL_EMPLOYEE_DEMOBILIZATION_DATE"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_DEMOBILIZATION_DATE" 
+               filter="safehtml" /> 
+
+        <field name="highest_army_rank" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_HIGHEST_ARMY_RANK"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_HIGHEST_ARMY_RANK" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="highest_trophies_awarded" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_HIGHEST_TROPHIES_AWARDED"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_HIGHEST_TROPHIES_AWARDED" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="forte_business" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_FORTE_BUSINESS"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_FORTE_BUSINESS" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="condition_health" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_CONDITION_HEALTH"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_CONDITION_HEALTH" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="height" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_HEIGHT"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_HEIGHT" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="weight" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_WEIGHT"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_WEIGHT" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="blood_group" type="list"
+                
+               label="COM_HRM_FORM_LBL_EMPLOYEE_BLOOD_GROUP"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_BLOOD_GROUP" 
+                
+                
+               required="true" 
+               menu_published="0"
+               filter="raw"
+               option_on="Yes"
+               option_off="Yes">
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">AB</option>
+            <option value="4">O</option>
+        </field> 
+
+        <field name="level_of_war_invalids" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_LEVEL_OF_WAR_INVALIDS"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_LEVEL_OF_WAR_INVALIDS" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="family_policy" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_FAMILY_POLICY"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_FAMILY_POLICY" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field name="phone_number" type="text" size="40" class="inputbox"
+                                                    
+               label="COM_HRM_FORM_LBL_EMPLOYEE_PHONE_NUMBER"
+               description="COM_HRM_FORM_DESC_EMPLOYEE_PHONE_NUMBER" 
+                                                    
+                                                    
+                                                    
+               filter="safehtml" /> 
+
+        <field
+            name="state"
+            type="list"
+            label="JSTATUS"
+            description="JFIELD_PUBLISHED_DESC"
+            class="inputbox"
+            size="1"
+            default="1">
+            <option value="1">JPUBLISHED</option>
+            <option value="0">JUNPUBLISHED</option>
+            <option value="2">JARCHIVED</option>
+            <option value="-2">JTRASHED</option>
+        </field> 
+
+        <field name="checked_out" type="hidden" filter="unset" />
+        <field name="checked_out_time" type="hidden" filter="unset" /> 
+
+    </fieldset> 
+
+    <fieldset 
+        name="accesscontrol">
+        <field name="asset_id" type="hidden" filter="unset" />
+        <field name="rules"
+               type="rules"
+               label="JFIELD_RULES_LABEL"
+               translate_label="false"
+               filter="rules"
+               validate="rules"
+               class="inputbox"
+               component="com_hrm"
+               section="employee"
+        />
+
+    </fieldset>
+
+</form>

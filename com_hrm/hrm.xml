@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+    <name>com_hrm</name>
+    <creationDate>2015-03-22</creationDate>
+    <copyright>Bản quyền (C) 2015. Các quyền đều được bảo vệ.</copyright>
+    <license>bản quyền mã nguồn mở GNU phiên bản 2</license>
+    <author>Tran Xuan Duc</author>
+    <authorEmail>ductranxuan.29710@gmail.com</authorEmail>
+    <authorUrl>http://facebook.com/ducsatthuttd</authorUrl>
+    <version>1.0.0</version>
+    <description>Quản lý tổ chức - cán bộ</description>
+    
+    <!-- Runs on install/uninstall/update; New in 2.5 -->
+    <scriptfile>script.php</scriptfile>
+
+    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+    <update> <!-- Runs on update; New since J2.5 -->
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>hrm.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>views</folder>
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+        <folder>assets</folder>
+    </files>
+    <languages folder="languages/site">
+        
+			<language tag="en-GB">en-GB/en-GB.com_hrm.ini</language>
+    </languages>
+    <administration>
+        <menu img="components/com_hrm/assets/images/s_com_hrm.png" >COM_HRM</menu>
+        <submenu>
+            
+            <menu link="option=com_hrm&amp;view=employees" view="employees" img="components/com_hrm/assets/images/s_employees.png" alt="Hrm/Employees">COM_HRM_TITLE_EMPLOYEES</menu>
+
+            <menu link="option=com_hrm&amp;view=positions" view="positions" img="components/com_hrm/assets/images/s_positions.png" alt="Hrm/Positions">COM_HRM_TITLE_POSITIONS</menu>
+
+            
+			<menu link="option=com_hrm&amp;view=departments" view="departments" img="components/com_hrm/assets/images/s_departments.png" alt="Hrm/Departments">COM_HRM_TITLE_DEPARTMENTS</menu>
+            
+            <menu link="option=com_hrm&amp;view=positionstypes" view="positionstypes" img="components/com_hrm/assets/images/s_positionstypes.png" alt="Hrm/Positionstypes">COM_HRM_TITLE_POSITIONSTYPES</menu>
+			
+			<menu link="option=com_hrm&amp;view=rewarddisciplines" view="rewarddisciplines" img="components/com_hrm/assets/images/s_rewarddisciplines.png" alt="Hrm/Rewarddisciplines">COM_HRM_TITLE_REWARDDISCIPLINES</menu>
+			
+			<menu link="option=com_hrm&amp;view=historyitselfs" view="historyitselfs" img="components/com_hrm/assets/images/s_historyitselfs.png" alt="Hrm/Historyitselfs">COM_HRM_TITLE_HISTORYITSELFS</menu>
+			
+			<menu link="option=com_hrm&amp;view=payrolls" view="payrolls" img="components/com_hrm/assets/images/s_payrolls.png" alt="Hrm/Payrolls">COM_HRM_TITLE_PAYROLLS</menu>
+			
+		<!--	<menu link="option=com_hrm&amp;view=wages" view="wages" img="components/com_hrm/assets/images/s_wages.png" alt="Hrm/Wages">COM_HRM_TITLE_WAGES</menu>
+	-->
+			
+			<menu link="option=com_hrm&amp;view=coefficients" view="coefficients" img="components/com_hrm/assets/images/s_coefficients.png" alt="Hrm/Coefficients">COM_HRM_TITLE_COEFFICIENTS</menu>
+			
+			<menu link="option=com_hrm&amp;view=scale_types" view="scale_types" img="components/com_hrm/assets/images/s_scale_types.png" alt="Hrm/Scale_types">COM_HRM_TITLE_SCALE_TYPES</menu>
+			
+			<menu link="option=com_hrm&amp;view=scale_groups" view="scale_groups" img="components/com_hrm/assets/images/s_scale_groups.png" alt="Hrm/Scale_groups">COM_HRM_TITLE_SCALE_GROUPS</menu>
+
+        </submenu>
+        <files folder="administrator">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>hrm.php</filename>
+            <folder>controllers</folder>
+            <folder>assets</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+        <languages folder="languages/administrator">
+            
+			<language tag="en-GB">en-GB/en-GB.com_hrm.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_hrm.sys.ini</language>
+        </languages>
+    </administration>
+    <plugins>
+        <plugin group="search" plugin="hrm"/>
+    </plugins>
+    
+</extension>
+<!-- Component built by the Joomla Component Creator -->
+<!-- http://www.component-creator.com/ -->

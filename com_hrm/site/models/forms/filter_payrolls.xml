@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_HRM_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+ <field name="scale_group_guid" type="sql" class="inputbox" onchange="this.form.submit();"
+                                    query="SELECT '' AS `guid`, '- Chọn Tên nhóm ngạch -' AS `title` UNION SELECT `guid`, `title` FROM `#__hrm_scale_group`" key_field="guid" value_field="title"/> 
+
+ <field name="scale_type_guid" type="sql" class="inputbox" onchange="this.form.submit();"
+                                    query="SELECT '' AS `guid`, '- Chọn Tên loại ngạch -' AS `title` UNION SELECT `guid`, `title` FROM `#__hrm_scale_type`" key_field="guid" value_field="title"/> 
+
+ <field name="wage_guid" type="sql" class="inputbox" onchange="this.form.submit();"
+                                    query="SELECT '' AS `guid`, '- Chọn bậc lương -' AS `title` UNION SELECT `guid`, `title` FROM `#__hrm_wage`" key_field="guid" value_field="title"/>
+
+    </fields>
+</form>

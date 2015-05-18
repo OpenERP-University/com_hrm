@@ -1,0 +1,164 @@
+.icon-48-departments {
+      background-image: url(../images/l_departments.png);
+      padding-left:60px!important;
+}
+
+.icon-48-department {
+      background-image: url(../images/l_departments.png);
+      padding-left:60px!important;
+}
+
+.icon-48-employees {
+      background-image: url(../images/l_employees.png);
+      padding-left:60px!important;
+}
+
+.icon-48-employee {
+      background-image: url(../images/l_employees.png);
+      padding-left:60px!important;
+}
+
+
+.icon-48-positionstypes {
+      background-image: url(../images/l_positionstypes.png);
+      padding-left:60px!important;
+}
+
+.icon-48-positionstype {
+      background-image: url(../images/l_positionstypes.png);
+      padding-left:60px!important;
+}
+
+.icon-48-positions {
+      background-image: url(../images/l_positions.png);
+      padding-left:60px!important;
+}
+
+.icon-48-position {
+      background-image: url(../images/l_positions.png);
+      padding-left:60px!important;
+}
+
+
+.icon-48-rewarddisciplines {
+      background-image: url(../images/l_rewarddisciplines.png);
+      padding-left:60px!important;
+}
+
+.icon-48-rewarddiscipline {
+      background-image: url(../images/l_rewarddisciplines.png);
+      padding-left:60px!important;
+}
+
+
+
+.icon-48-historyitselfs {
+      background-image: url(../images/l_historyitselfs.png);
+      padding-left:60px!important;
+}
+
+.icon-48-historyitself {
+      background-image: url(../images/l_historyitselfs.png);
+      padding-left:60px!important;
+}
+
+
+.icon-48-payrolls {
+      background-image: url(../images/l_payrolls.png);
+      padding-left:60px!important;
+}
+
+.icon-48-payroll {
+      background-image: url(../images/l_payrolls.png);
+      padding-left:60px!important;
+}
+
+
+.icon-48-wages {
+      background-image: url(../images/l_wages.png);
+      padding-left:60px!important;
+}
+
+.icon-48-wage {
+      background-image: url(../images/l_wages.png);
+      padding-left:60px!important;
+}
+
+
+.icon-48-coefficients {
+      background-image: url(../images/l_coefficients.png);
+      padding-left:60px!important;
+}
+
+.icon-48-coefficient {
+      background-image: url(../images/l_coefficients.png);
+      padding-left:60px!important;
+}
+
+
+.icon-48-scale_types {
+      background-image: url(../images/l_scale_types.png);
+      padding-left:60px!important;
+}
+
+.icon-48-scale_type {
+      background-image: url(../images/l_scale_types.png);
+      padding-left:60px!important;
+}
+
+
+.icon-48-scale_groups {
+      background-image: url(../images/l_scale_groups.png);
+      padding-left:60px!important;
+}
+
+.icon-48-scale_group {
+      background-image: url(../images/l_scale_groups.png);
+      padding-left:60px!important;
+}
+
+
+
+
+.select-controls{
+    padding: 0 0 0 8px;
+    height: 23px;
+    border: 1px solid #aaa;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    padding: 0 0 0 8px;
+    height: 23px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background-color: #fff;
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(20%, #ffffff), color-stop(50%, #f6f6f6), color-stop(52%, #eeeeee), color-stop(100%, #f4f4f4));
+    background: -webkit-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+    background: -moz-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+    background: -o-linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+    background: linear-gradient(top, #ffffff 20%, #f6f6f6 50%, #eeeeee 52%, #f4f4f4 100%);
+    background-clip: padding-box;
+    box-shadow: 0 0 3px white inset, 0 1px 1px rgba(0, 0, 0, 0.1);
+    color: #444;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 24px;
+}
+
+
+.select-controls options{
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0 4px 4px 0;
+    padding: 0 0 0 4px;
+    max-height: 240px;
+    border-radius: 5px;
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}

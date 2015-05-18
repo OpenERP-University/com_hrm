@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_HRM_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="employee_guid" type="sql" class="inputbox" onchange="this.form.submit();"
+                                    query="SELECT '' AS `guid`, '- Please select Tên cán bộ -' AS `guid` UNION SELECT `guid`, `fullname` FROM `#__hrm_employee`" key_field="guid" value_field="fullname`"/> 
+
+ <field name="department_guid" type="sql" class="inputbox" onchange="this.form.submit();"
+                                    query="SELECT '' AS `guid`, '- Please select Cấp quyết định -' AS `guid` UNION SELECT `guid`, `title` FROM `#__hrm_departments`" key_field="guid" value_field="title"/> 
+
+ 
+		<field name="option" type="list" onchange="this.form.submit();">
+		<option value="">COM_HRM_REWARDDISCIPLINES_OPTION_FILTER</option>
+		<option value="1">COM_HRM_REWARDDISCIPLINES_OPTION_OPTION_1</option>
+		<option value="2">COM_HRM_REWARDDISCIPLINES_OPTION_OPTION_2</option>
+		</field>
+
+    </fields>
+</form>

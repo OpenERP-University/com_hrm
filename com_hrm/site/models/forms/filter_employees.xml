@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+        <field name="search" type="text" hint="COM_HRM_SEARCH_FILTER_SUBMIT"
+               label="COM_USERS_FILTER_SEARCH_DESC"
+               class="js-stools-search-string" />
+
+        <field name="user_id" type="sql" class="inputbox" onchange="this.form.submit();"
+                                    query="SELECT '' AS `id`, '- Please select Tài khoản người dùng -' AS `username` UNION SELECT `id`, `username` FROM `#__users`" key_field="id" value_field="username"/> 
+
+  <field name="department_guid" type="sql" class="inputbox" onchange="this.form.submit();"
+                                    query="SELECT '' AS `guid`, '- Chọn đơn vị chủ quản -' AS `title` UNION SELECT `guid`, `title` FROM `#__hrm_departments`" key_field="guid" value_field="title"/>
+
+    </fields>
+</form>
