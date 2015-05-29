@@ -256,7 +256,65 @@ class HrmTableemployee extends JTable {
                 $checkin
         );
         $this->_db->execute();
+        if ($state == '-2') {
+            $checkTrue = NULL;
+            foreach ($pks as $pk) {
 
+                $db = $this->_db;
+                $query = $db->getQuery(true);
+                $query
+                        ->select($db->quoteName('guid'))
+                        ->from('`#__hrm_employee`')
+                        ->where($db->quoteName('id') . ' = ' . $db->quote($db->escape($pk)));
+                $db->setQuery($query);
+                $guid = $db->loadResult();
+
+                if ($guid) {
+                    $db->setQuery(
+                            'UPDATE `#__fm_revenue_deduction`' .
+                            ' SET `state` = ' . (int) $state .
+                            ' WHERE employee_guid = ' .
+                            $db->quote($db->escape($guid))
+                    );
+                    $this->_db->execute();
+                    $db->setQuery(
+                            'UPDATE `#__fm_e_allowance`' .
+                            ' SET `state` = ' . (int) $state .
+                            ' WHERE employee_guid = ' .
+                            $db->quote($db->escape($guid))
+                    );
+                    $this->_db->execute();
+                    $db->setQuery(
+                            'UPDATE `#__fm_employee_payroll`' .
+                            ' SET `state` = ' . (int) $state .
+                            ' WHERE employee_guid = ' .
+                            $db->quote($db->escape($guid))
+                    );
+                    $this->_db->execute();
+                    $db->setQuery(
+                            'UPDATE `#__hrm_payroll`' .
+                            ' SET `state` = ' . (int) $state .
+                            ' WHERE employee_guid = ' .
+                            $db->quote($db->escape($guid))
+                    );
+                    $this->_db->execute();
+                    $db->setQuery(
+                            'UPDATE `#__hrm_position`' .
+                            ' SET `state` = ' . (int) $state .
+                            ' WHERE employee_guid = ' .
+                            $db->quote($db->escape($guid))
+                    );
+                    $this->_db->execute();
+                    $db->setQuery(
+                            'UPDATE `#__hrm_history_itself`' .
+                            ' SET `state` = ' . (int) $state .
+                            ' WHERE employee_guid = ' .
+                            $db->quote($db->escape($guid))
+                    );
+                    $this->_db->execute();
+                }
+            }
+        }
 // If checkin is supported and all rows were adjusted, check them in.
         if ($checkin && (count($pks) == $this->_db->getAffectedRows())) {
 // Checkin each row.
