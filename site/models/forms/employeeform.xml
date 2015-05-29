@@ -80,7 +80,9 @@
               description="COM_HRM_FORM_DESC_EMPLOYEE_DATE_OF_BIRTH" 
               filter="safehtml" /> 
 
-        <field name="gender" type="list"
+        <field name="gender" type="radio"
+               class="btn-group"
+               default="1"
                 
               label="COM_HRM_FORM_LBL_EMPLOYEE_GENDER"
               description="COM_HRM_FORM_DESC_EMPLOYEE_GENDER" 
