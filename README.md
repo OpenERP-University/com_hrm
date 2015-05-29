@@ -1,7 +1,7 @@
 # com_hrm
-quản lý nhân sự - HRM
-component được sử dụng cùng component Financial management com_fm
-download com_fm tại địa chỉ : https://github.com/OpenERP-University/com_fm
+- quản lý nhân sự - HRM
+- component được sử dụng cùng component Financial management com_fm
+- download com_fm tại địa chỉ : https://github.com/OpenERP-University/com_fm
 
 
 #Tính năng nổi bật
