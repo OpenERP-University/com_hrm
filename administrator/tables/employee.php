@@ -570,7 +570,7 @@ class HrmTableemployee extends JTable {
             $db->setQuery($query);
             $db->execute();
 
-            $query = "INSERT INTO `#__fm_employee_payroll`(`guid`,`employee_guid`,`department_guid`) VALUES (" . $db->quote($db->escape($this->checkExitsGuid(NULL, '#__fm_employee_payroll'))) . "," . $db->quote($db->escape($employee_guid)) . "," . $db->quote($db->escape($department_guid)) . ");";
+            $query = "INSERT INTO `#__fm_employee_payroll`(`guid`,`employee_guid`) VALUES (" . $db->quote($db->escape($this->checkExitsGuid(NULL, '#__fm_employee_payroll'))) . "," . $db->quote($db->escape($employee_guid)) .");";
             $db->setQuery($query);
 
             $result = $db->execute();
