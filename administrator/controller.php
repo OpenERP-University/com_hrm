@@ -81,6 +81,7 @@ class HrmController extends JControllerLegacy {
                
                 if($listNotify){
                     HrmHelperMail::sendMailNotify($listNotify);
+                     $modelauto->updateDate();
                 }else{
                     $modelauto->updateDate();
                 }
