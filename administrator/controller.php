@@ -78,9 +78,12 @@ class HrmController extends JControllerLegacy {
                 $modelPayroll = $this->getModel('payroll');
                 $listUpdate = $modelPayroll->getPayrollsUpdate();
                 $listNotify = $modelPayroll->getPayrollsUpdate(JComponentHelper::getParams('com_hrm')->get('time_notify'));
-                
+               
                 if($listNotify){
                     HrmHelperMail::sendMailNotify($listNotify);
+                     $modelauto->updateDate();
+                }else{
+                    $modelauto->updateDate();
                 }
                 if($listUpdate){
                     $update = $modelPayroll->updatePayrolls($listUpdate);
@@ -91,6 +94,8 @@ class HrmController extends JControllerLegacy {
                         }
                         $modelauto->updateDate();
                     }
+                }else{
+                    $modelauto->updateDate();
                 }
                 
             }
