@@ -4,7 +4,7 @@
  * @package     com_hrm
  * @copyright   Bản quyền (C) 2015. Các quyền đều được bảo vệ.
  * @license     bản quyền mã nguồn mở GNU phiên bản 2
- * @author      Hoang <hoangdau17592@gmail.com> - https://www.facebook.com/hoangdau92
+ * @author      Tran Xuan Duc <ductranxuan.29710@gmail.com> - http://facebook.com/ducsatthuttd
  */
 // no direct access
 defined('_JEXEC') or die;
@@ -29,6 +29,50 @@ $document->addStyleSheet('components/com_hrm/assets/css/hrm.css');
             }
         });
         js("#jform_department_guid").trigger("liszt:updated");
+
+        js("#emaildefault").click(function () {
+            var firstname = js("#jform_firstname").val();
+            var lastname = js("#jform_lastname").val();
+
+            if (!firstname || !lastname) {
+                alert('<?php echo JText::_('COM_HRM_EMAIL_ALERT', true)?>');
+            }
+            else
+            {
+                var fullname = firstname + lastname;
+                fullname = encodeURIComponent(fullname);
+                var data = {
+                    "fullname": fullname
+                };
+
+                js.ajax({
+                    type: "POST",
+                    url: "index.php?option=com_hrm&task=getMail",
+                    data: data,
+                    datatype: "json",
+                    contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Accept-Charset", "utf-8");
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+                    },
+                    success: function (email) {
+                        js("#jform_email").val(email);
+
+                    }
+                });
+            }
+
+        });
+
+<?php
+if ($this->item->id):
+    ?>
+            js('#emaildefault').remove();
+            js("#jform_email").val('<?php echo $this->item->email; ?>');
+            js('#jform_email').attr('readonly','readonly');
+    <?php
+endif;
+?>
     });
 
     Joomla.submitbutton = function (task)
@@ -47,6 +91,8 @@ $document->addStyleSheet('components/com_hrm/assets/css/hrm.css');
             }
         }
     }
+
+
 </script>
 
 <form action="<?php echo JRoute::_('index.php?option=com_hrm&layout=edit&id=' . (int) $this->item->id); ?>" method="post" enctype="multipart/form-data" name="adminForm" id="employee-form" class="form-validate">
@@ -60,10 +106,16 @@ $document->addStyleSheet('components/com_hrm/assets/css/hrm.css');
         <div class="control-label"><?php echo $this->form->getLabel('lastname'); ?></div>
         <div  class="controls"  style="margin-right: 100px" ><?php echo $this->form->getInput('lastname'); ?></div>
 
-        <div class="control-label"><?php echo $this->form->getLabel('fullname'); ?></div>
-        <fieldset disabled class="controls">
-            <div class="form-group" ><?php echo $this->form->getInput('fullname'); ?></div>
-        </fieldset>
+
+        <div class="input-append input-prepend"> 
+            <span class="add-on">
+                <i class="icon-mail"></i>
+            </span>
+            <?php echo $this->form->getInput('email'); ?>
+            <a id="emaildefault" class="btn width-auto hasTooltip" title data-original-title="<?php echo JText::_('COM_HRM_TOOLTITLE_EMAIL',true);?>">
+                <i class="icon-edit"></i>
+            </a>
+        </div>
 
     </div>
     <div>     </div>
@@ -289,11 +341,7 @@ $document->addStyleSheet('components/com_hrm/assets/css/hrm.css');
                         <input  type="text" value="<?php echo $this->item->username; ?>" disabled>
 
                     </div>
-                    <div class="control-group">
-                        <label ><?php echo JText::_('JGLOBAL_EMAIL'); ?></label>
-                        <input  type="text" value="<?php echo $this->item->email; ?>" disabled>
 
-                    </div>
                 <?php } ?>
             </div>
             <div class="control-group">

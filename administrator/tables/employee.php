@@ -3,9 +3,9 @@
 /**
  * @version     1.0.0
  * @package     com_hrm
- * @copyright   Báº£n quyá»?n (C) 2015. CÃ¡c quyá»?n Ä‘á»?u Ä‘Æ°á»£c báº£o vá»‡.
- * @license     báº£n quyá»?n mÃ£ nguá»“n má»Ÿ GNU phiÃªn báº£n 2
- * @author      Hoang <hoangdau17592@gmail.com> - https://www.facebook.com/hoangdau92
+ * @copyright   Bản quyền (C) 2015. Các quyền đều được bảo vệ.
+ * @license     bản quyền mã nguồn mở GNU phiên bản 2
+ * @author      Tran Xuan Duc <ductranxuan.29710@gmail.com> - http://facebook.com/ducsatthuttd
  */
 // No direct access
 defined('_JEXEC') or die;
@@ -150,8 +150,8 @@ class HrmTableemployee extends JTable {
 
 //Create Mail for new User
         if ($array['id'] == 0) {
-            $convert = $this->createNewEmail($this->convertVNese($array['fullname']));
-            $emailCreate = $this->createEmailUser($convert, $array['fullname']);
+         #   $convert = $this->createNewEmail($this->convertVNese($array['fullname']));
+            $emailCreate = $this->createEmailUser($array['email'], $array['fullname']);
 
             if (!$emailCreate) {
                 return FALSE;
@@ -464,16 +464,17 @@ class HrmTableemployee extends JTable {
      */
     public function createEmailUser($email = NULL, $fullname = NULL) {
         if ($email && $fullname) {
-            $username = $email;
-            $suffixes = JComponentHelper::getComponent('com_hrm')->params->get('suffixes_email');
-            if ($suffixes) {
-                $email = $email . "@" . $suffixes;
-            } else {
-                $email = $email . "@humg.edu.vn";
-            }
+            $username = $fullname;
+//            $suffixes = JComponentHelper::getComponent('com_hrm')->params->get('suffixes_email');
+//            if ($suffixes) {
+//                $email = $email . "@" . $suffixes;
+//            } else {
+//                $email = $email . "@humg.edu.vn";
+//            }
             $salt = JUserHelper::genRandomPassword(32);
 
-            $autoPassword = "matkhaucanbuild";
+            $autoPassword = JUserHelper::genRandomPassword();
+            
             $crypt = JUserHelper::getCryptedPassword($autoPassword, $salt);
             $password = $crypt . ':' . $salt;
             $db = JFactory::getDbo();
@@ -504,10 +505,8 @@ class HrmTableemployee extends JTable {
      */
     public function addUser2Group($user_id = NULL) {
         if ($user_id) {
-            $default_usergroup = JComponentHelper::getComponent('com_hrm')->params->get('default_usergroup');
-            if (!$default_usergroup) {
-                $default_usergroup = '2';
-            }
+            $default_usergroup = JComponentHelper::getComponent('com_hrm')->params->get('default_usergroup','2');
+            
             $db = JFactory::getDbo();
 
             $query = $db->getQuery(true);

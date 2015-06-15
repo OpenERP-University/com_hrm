@@ -78,28 +78,46 @@ class HrmController extends JControllerLegacy {
                 $modelPayroll = $this->getModel('payroll');
                 $listUpdate = $modelPayroll->getPayrollsUpdate();
                 $listNotify = $modelPayroll->getPayrollsUpdate(JComponentHelper::getParams('com_hrm')->get('time_notify'));
-               
-                if($listNotify){
+
+                if ($listNotify) {
                     HrmHelperMail::sendMailNotify($listNotify);
-                     $modelauto->updateDate();
-                }else{
+                    $modelauto->updateDate();
+                } else {
                     $modelauto->updateDate();
                 }
-                if($listUpdate){
+                if ($listUpdate) {
                     $update = $modelPayroll->updatePayrolls($listUpdate);
-                    if($update){
+                    if ($update) {
                         $update = $modelPayroll->updatePayrolls($listUpdate);
-                        if($update){
+                        if ($update) {
                             HrmHelperMail::sendMailUpdate($listUpdate);
                         }
                         $modelauto->updateDate();
                     }
-                }else{
+                } else {
                     $modelauto->updateDate();
                 }
-                
             }
         }
+    }
+
+    public function getMail() {
+        JFactory::getDocument()->setMimeEncoding('application/json');
+
+        $input = JFactory::getApplication()->input;
+        $fullname = $input->post->getString('fullname');
+        $fullname = urldecode($fullname);
+        $employee = $this->getModel('employee');
+        $table = $employee->getTable();
+        $convert = $table->createNewEmail($table->convertVNese($fullname));
+
+        $suffixes = JComponentHelper::getParams('com_hrm')->get('suffixes_email', 'humg.edu.vn');
+
+        $email = $convert . '@' . $suffixes;
+
+        echo $email;
+
+        JFactory::getApplication()->close();
     }
 
 }

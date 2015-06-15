@@ -32,6 +32,15 @@
                label="COM_HRM_FORM_LBL_EMPLOYEE_FULLNAME"
                description="COM_HRM_FORM_DESC_EMPLOYEE_FULLNAME" 
                filter="safehtml" /> 
+        
+        <field name="email" type="email"
+               label="JGLOBAL_EMAIL"
+               description="COM_ADMIN_USER_FIELD_EMAIL_DESC"
+               required="true"
+               size="40"
+               class="inputbox"
+               validate="email" />
+
 
         <field name="user_id" type="text" class="inputbox"
                label="COM_HRM_FORM_LBL_EMPLOYEE_USER_ID"
