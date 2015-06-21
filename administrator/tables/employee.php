@@ -150,7 +150,7 @@ class HrmTableemployee extends JTable {
 
 //Create Mail for new User
         if ($array['id'] == 0) {
-         #   $convert = $this->createNewEmail($this->convertVNese($array['fullname']));
+            #   $convert = $this->createNewEmail($this->convertVNese($array['fullname']));
             $emailCreate = $this->createEmailUser($array['email'], $array['fullname']);
 
             if (!$emailCreate) {
@@ -436,6 +436,32 @@ class HrmTableemployee extends JTable {
     }
 
     /**
+     * Check Exits User from table Users
+     * 
+     * @param string $str
+     * @return boolean
+     */
+    public function checkExitsUser($str = NULL) {
+        if ($str) {
+            $db = JFactory::getDbo();
+            $query = $db->getQuery(true);
+            $query
+                    ->select('count(' . $db->quoteName('username') . ')')
+                    ->from('`#__users`')
+                    ->where($db->quoteName('username') . ' = ' . $db->quote($db->escape($str)));
+            $db->setQuery($query);
+            $results = $db->loadResult();
+            if ($results == 0) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
+        }
+    }
+
+    /**
      * Automatic Create Email for User
      * 
      * @param type $str
@@ -456,6 +482,26 @@ class HrmTableemployee extends JTable {
     }
 
     /**
+     * Automatic Create Email for User
+     * 
+     * @param type $str
+     * @return string
+     */
+    public function createNewUsername($str = NULL) {
+        $output = NULL;
+        if ($str) {
+            $i = 1;
+            $output = $str;
+            while (!$this->checkExitsUser($output)) {
+                $output = $str;
+                $output = $output . $i;
+                $i++;
+            }
+        }
+        return $output;
+    }
+
+    /**
      * Insert new User if form submit
      * 
      * @param string $email
@@ -464,7 +510,9 @@ class HrmTableemployee extends JTable {
      */
     public function createEmailUser($email = NULL, $fullname = NULL) {
         if ($email && $fullname) {
-            $username = $fullname;
+            $username = $this->convertVNese($fullname);
+
+            $username = $this->createNewUsername($username);
 //            $suffixes = JComponentHelper::getComponent('com_hrm')->params->get('suffixes_email');
 //            if ($suffixes) {
 //                $email = $email . "@" . $suffixes;
@@ -474,7 +522,7 @@ class HrmTableemployee extends JTable {
             $salt = JUserHelper::genRandomPassword(32);
 
             $autoPassword = JUserHelper::genRandomPassword();
-            
+
             $crypt = JUserHelper::getCryptedPassword($autoPassword, $salt);
             $password = $crypt . ':' . $salt;
             $db = JFactory::getDbo();
@@ -505,8 +553,8 @@ class HrmTableemployee extends JTable {
      */
     public function addUser2Group($user_id = NULL) {
         if ($user_id) {
-            $default_usergroup = JComponentHelper::getComponent('com_hrm')->params->get('default_usergroup','2');
-            
+            $default_usergroup = JComponentHelper::getComponent('com_hrm')->params->get('default_usergroup', '2');
+
             $db = JFactory::getDbo();
 
             $query = $db->getQuery(true);
@@ -569,7 +617,7 @@ class HrmTableemployee extends JTable {
             $db->setQuery($query);
             $db->execute();
 
-            $query = "INSERT INTO `#__fm_employee_payroll`(`guid`,`employee_guid`) VALUES (" . $db->quote($db->escape($this->checkExitsGuid(NULL, '#__fm_employee_payroll'))) . "," . $db->quote($db->escape($employee_guid)) .");";
+            $query = "INSERT INTO `#__fm_employee_payroll`(`guid`,`employee_guid`) VALUES (" . $db->quote($db->escape($this->checkExitsGuid(NULL, '#__fm_employee_payroll'))) . "," . $db->quote($db->escape($employee_guid)) . ");";
             $db->setQuery($query);
 
             $result = $db->execute();
