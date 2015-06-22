@@ -2,11 +2,11 @@
 <extension type="component" version="3.0" method="upgrade">
     <name>com_hrm</name>
     <creationDate>2015-03-22</creationDate>
-    <copyright>Bản quyền (C) 2015. Các quyền đều được bảo vệ.</copyright>
-    <license>bản quyền mã nguồn mở GNU phiên bản 2</license>
-    <author>Tran Xuan Duc</author>
-    <authorEmail>ductranxuan.29710@gmail.com</authorEmail>
-    <authorUrl>http://facebook.com/ducsatthuttd</authorUrl>
+    <copyright>Copyright (c) 2015 Open ERP University - Hanoi University of Mining and Geology (HUMG)- http://humg.edu.vn </copyright>
+    <license>http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt</license>
+    <author>OpenERP University Team</author>
+    <authorEmail>ductranxuan.29710@gmail.com - dinhtrongnghia92@gmail.com - hoangdau17592@gmail.com - nhannd92@gmail.com</authorEmail>
+    <authorUrl>https://github.com/OpenERP-University</authorUrl>
     <version>1.0.0</version>
     <description>Quản lý tổ chức - cán bộ</description>
     
