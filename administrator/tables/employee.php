@@ -223,10 +223,53 @@ class HrmTableemployee extends JTable {
             $this->ordering = self::getNextOrder();
         }
         
-        if(!(int)$this->identity_card_number)
-        {
-             $this->setError(JText::_('COM_HRM_ERROR'));
-             return FALSE;
+        //check datatypes
+        if ($this->identity_card_number != NULL) {
+            $lengthstr = strlen($this->identity_card_number);
+            $array = str_split($this->identity_card_number);
+            for ($i = 0; $i < $lengthstr; $i++) {
+                if (!(int) $array[$i]) {
+                    $this->setError(JText::_('COM_HRM_ERROR'));
+                    return FALSE;
+                    break;
+                }
+            }
+        }
+        
+        if ($this->phone_number != NULL) {
+            $lengthstr = strlen($this->phone_number);
+            $array = str_split($this->phone_number);
+            for ($i = 0; $i < $lengthstr; $i++) {
+                if (!(int) $array[$i]) {
+                    $this->setError(JText::_('COM_HRM_ERROR'));
+                    return FALSE;
+                    break;
+                }
+            }
+        }
+        
+        if ($this->height != NULL) {
+            $lengthstr = strlen($this->height);
+            $array = str_split($this->height);
+            for ($i = 0; $i < $lengthstr; $i++) {
+                if (!(int) $array[$i]) {
+                    $this->setError(JText::_('COM_HRM_ERROR'));
+                    return FALSE;
+                    break;
+                }
+            }
+        }
+        
+        if ($this->weight != NULL) {
+            $lengthstr = strlen($this->weight);
+            $array = str_split($this->weight);
+            for ($i = 0; $i < $lengthstr; $i++) {
+                if (!(int) $array[$i]) {
+                    $this->setError(JText::_('COM_HRM_ERROR'));
+                    return FALSE;
+                    break;
+                }
+            }
         }
 
         return parent::check();
