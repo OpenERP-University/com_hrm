@@ -52,7 +52,19 @@ $document->addStyleSheet('components/com_hrm/assets/css/hrm.css');
             }
         });
         js("#jform_department_guid").trigger("liszt:updated");
+        
+        js('a.test').click(function () {
+            var a_href = js(this).attr('href');
+            js('ul#myTabTabs li').removeClass('active');
+            js.each(js('ul#myTabTabs li'), function (k, v) {
+                var now = js('a', this).attr('href');
+                if (now == a_href) {
+                    js(this).addClass('active');
+                }
+            });
 
+        });
+        
         js("#emaildefault").click(function () {
             var firstname = js("#jform_firstname").val();
             var lastname = js("#jform_lastname").val();
