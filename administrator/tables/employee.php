@@ -222,6 +222,12 @@ class HrmTableemployee extends JTable {
         if (property_exists($this, 'ordering') && $this->id == 0) {
             $this->ordering = self::getNextOrder();
         }
+        
+        if(!(int)$this->identity_card_number)
+        {
+             $this->setError(JText::_('COM_HRM_ERROR'));
+             return FALSE;
+        }
 
         return parent::check();
     }

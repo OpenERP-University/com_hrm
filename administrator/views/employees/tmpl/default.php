@@ -238,24 +238,19 @@ if (!empty($this->extra_sidebar)) {
                                 </td>
                             <?php endif; ?>
 
-                            <td onclick="Link(<?php echo $item->id; ?>)">
-
-                                <?php echo $item->fullname; ?>
-                            </td></a>
-                            <td onclick="Link(<?php echo $item->id; ?>)">
-
+                            <td >
+                                <a href = "<?php echo JRoute::_('index.php?option=com_hrm&view=employee&layout=edit&id=' . $item->id); ?>"  >  <?php echo $item->fullname; ?></a>
+                            </td>
+                            <td >
                                 <?php echo $item->gender; ?>
                             </td >
-                            <td onDblclick="Link(<?php echo $item->id; ?>)">
-
+                            <td >
                                 <?php echo $item->hometown; ?>
                             </td>
-                            <td onDblclick="Link(<?php echo $item->id; ?>)">
-
+                            <td >
                                 <?php echo $item->department_guid; ?>
                             </td>
-                            <td onDblclick="Link(<?php echo $item->id; ?>)">
-
+                            <td >
                                 <?php echo $item->current_residence; ?>
                             </td>
 

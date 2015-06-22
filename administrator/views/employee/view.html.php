@@ -92,7 +92,7 @@ class HrmViewEmployee extends JViewLegacy {
         }
 
         if (empty($this->item->id)) {
-            JToolBarHelper::custom('employee.save2payroll', 'save.png', 'save_f2.png', 'Save -> Quá trình lương', false);
+            JToolBarHelper::custom('employee.save2payroll', 'save.png', 'save_f2.png', 'COM_HRM_SAVE2PAYROLL', false);
         }
 
         if (!$checkedOut && ($canDo->get('core.create'))) {

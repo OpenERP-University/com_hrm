@@ -53,7 +53,7 @@ $document->addStyleSheet('components/com_hrm/assets/css/hrm.css');
         });
         js("#jform_department_guid").trigger("liszt:updated");
         
-        js('a.test').click(function () {
+        js('a.moved').click(function () {
             var a_href = js(this).attr('href');
             js('ul#myTabTabs li').removeClass('active');
             js.each(js('ul#myTabTabs li'), function (k, v) {
@@ -63,6 +63,74 @@ $document->addStyleSheet('components/com_hrm/assets/css/hrm.css');
                 }
             });
 
+        });
+
+        js('#jform_phone_number').keyup(function () {
+            var x = js('#jform_phone_number').val();
+            for (var i = 0; i < x.length; i++) {
+                if (!parseInt(x[i])) {
+                    if (x[i] !== '0') {
+                        x = x.substring(0, i);
+                    }
+                }
+            }
+            js('#jform_phone_number').val(x);
+        });
+
+        js('#jform_identity_card_number').keyup(function () {
+            var x = js('#jform_identity_card_number').val();
+            for (var i = 0; i < x.length; i++) {
+                if (!parseInt(x[i])) {
+                    if (x[i] !== '0') {
+                        x = x.substring(0, i);
+                    }
+                }
+            }
+            js('#jform_identity_card_number').val(x);
+        });
+
+        js('#jform_height').keyup(function () {
+            var x = js('#jform_height').val();
+            var dem = 0;
+            for (var i = 0; i < x.length; i++) {
+                if (!parseInt(x[i])) {
+                    if (x[i] !== '0') {
+                        if (dem == 1) {
+                            if (x[i] === '.') {
+                                x = x.substring(0, i);
+                            }
+                        }
+                        if (x[i] !== '.') {
+                            x = x.substring(0, i);
+                        } else {
+                            dem = 1;
+                        }
+                    }
+                }
+            }
+            js('#jform_height').val(x);
+        });
+
+        js('#jform_weight').keyup(function () {
+            var x = js('#jform_weight').val();
+            var dem = 0;
+            for (var i = 0; i < x.length; i++) {
+                if (!parseInt(x[i])) {
+                    if (x[i] !== '0') {
+                        if (dem == 1) {
+                            if (x[i] === '.') {
+                                x = x.substring(0, i);
+                            }
+                        }
+                        if (x[i] !== '.') {
+                            x = x.substring(0, i);
+                        } else {
+                            dem = 1;
+                        }
+                    }
+                }
+            }
+            js('#jform_weight').val(x);
         });
         
         js("#emaildefault").click(function () {
@@ -258,6 +326,9 @@ endif;
             </div>
 
         </div>
+        
+        <br><br>
+        <p align="center"><a href="#1" title="<?php echo JText::_('COM_HRM_TITLE_TAB_EDUCATION_BACKGROUND_EMPLOYEE', true); ?>" class="btn btn-success btn-default moved" data-toggle="tab" ><span class="icon-arrow-right-4"></span></a><p>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
         <!-- them tab --Trình độ học vấn-- ><-->
         <?php echo JHtml::_('bootstrap.addTab', 'myTab', '1', JText::_('COM_HRM_TITLE_TAB_EDUCATION_BACKGROUND_EMPLOYEE', true)); ?>
@@ -289,6 +360,9 @@ endif;
                 </div>
             </div>
         </div>
+        <br><br>
+        <p align="center"><a href="#general" title="<?php echo JText::_('COM_HRM_TITLE_TAB_PERSONAL_INFORMATION_EMPLOYEE', true); ?>" class="btn btn-success btn-default moved" data-toggle="tab" ><span class="icon-arrow-left-4"></span></a>
+            <a href="#2" title="<?php echo JText::_('COM_HRM_TITLE_TAB_JOB_EMPLOYEE', true); ?>" class="btn btn-success btn-default moved" data-toggle="tab" ><span class="icon-arrow-right-4"></span></a><p>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
         <!-- het  tab><-->
 
@@ -325,6 +399,9 @@ endif;
                 </div>
             </div>
         </div>
+        <br><br>
+        <p align="center"><a href="#1" title="<?php echo JText::_('COM_HRM_TITLE_TAB_EDUCATION_BACKGROUND_EMPLOYEE', true); ?>" class="btn btn-success btn-default moved" data-toggle="tab" ><span class="icon-arrow-left-4"></span></a>
+            <a href="#3" title="<?php echo JText::_('COM_HRM_TITLE_TAB_INCORPORATION_ACTIVITIES_EMPLOYEE', true); ?>" class="btn btn-success btn-default moved" data-toggle="tab" ><span class="icon-arrow-right-4"></span></a><p>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
         <!-- het  tab><-->
         <!-- them tab -- Tổ chức và hoạt động-- ><-->
@@ -362,6 +439,9 @@ endif;
                 </div>
             </div>
         </div>
+        <br><br>
+        <p align="center"><a href="#2" title="<?php echo JText::_('COM_HRM_TITLE_TAB_JOB_EMPLOYEE', true); ?>" class="btn btn-success btn-default moved" data-toggle="tab" ><span class="icon-arrow-left-4"></span></a>
+            <a href="#4" title="<?php echo JText::_('COM_HRM_TITLE_TAB_USER_EMPLOYEE', true); ?>" class="btn btn-success btn-default moved" data-toggle="tab" ><span class="icon-arrow-right-4"></span></a><p>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
         <!-- het  tab><-->
 
@@ -383,6 +463,8 @@ endif;
                 <?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
             </div>
         </div>
+        <br><br>
+        <p align="center"><a href="#3" title="<?php echo JText::_('COM_HRM_TITLE_TAB_INCORPORATION_ACTIVITIES_EMPLOYEE', true); ?>" class="btn btn-success btn-default moved" data-toggle="tab" ><span class="icon-arrow-left-4"></span></a><p>
         <?php echo JHtml::_('bootstrap.endTab'); ?>
         <!-- het  tab><-->
         <?php if (JFactory::getUser()->authorise('core.admin', 'hrm')) : ?>
