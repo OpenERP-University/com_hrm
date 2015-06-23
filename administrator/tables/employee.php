@@ -264,8 +264,10 @@ class HrmTableemployee extends JTable {
             $dem = 0;
             for ($i = 0; $i < $lengthstr; $i++) {
                 if (!(int) $array[$i]) {
-                    if ($array[$i] != '0') {
-                        $dem ++;
+                    if ($array[$i] != '.') {
+                        if ($array[$i] != '0') {
+                            $dem ++;
+                        }
                     }
                 }
             }
@@ -281,8 +283,10 @@ class HrmTableemployee extends JTable {
             $dem = 0;
             for ($i = 0; $i < $lengthstr; $i++) {
                 if (!(int) $array[$i]) {
-                    if ($array[$i] != '0') {
-                        $dem ++;
+                    if ($array[$i] != '.') {
+                        if ($array[$i] != '0') {
+                            $dem ++;
+                        }
                     }
                 }
             }
