@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-    <fieldset label="COM_HRM" name="hrm">
+    <fieldset label="JGLOBAL_SAVE_HISTORY_OPTIONS_LABEL" name="hrm">
         <field
             name="save_history"
             type="radio"
