@@ -227,48 +227,68 @@ class HrmTableemployee extends JTable {
         if ($this->identity_card_number != NULL) {
             $lengthstr = strlen($this->identity_card_number);
             $array = str_split($this->identity_card_number);
+            $dem = 0;
             for ($i = 0; $i < $lengthstr; $i++) {
                 if (!(int) $array[$i]) {
-                    $this->setError(JText::_('COM_HRM_ERROR'));
-                    return FALSE;
-                    break;
+                    if ($array[$i] != '0') {
+                        $dem ++;
+                    }
                 }
+            }
+            if ($dem != 0) {
+                $this->setError(JText::_('COM_HRM_ERROR'));
+                return FALSE;
             }
         }
         
         if ($this->phone_number != NULL) {
             $lengthstr = strlen($this->phone_number);
             $array = str_split($this->phone_number);
+            $dem = 0;
             for ($i = 0; $i < $lengthstr; $i++) {
                 if (!(int) $array[$i]) {
-                    $this->setError(JText::_('COM_HRM_ERROR'));
-                    return FALSE;
-                    break;
+                    if ($array[$i] != '0') {
+                        $dem ++;
+                    }
                 }
+            }
+            if ($dem != 0) {
+                $this->setError(JText::_('COM_HRM_ERROR'));
+                return FALSE;
             }
         }
         
         if ($this->height != NULL) {
             $lengthstr = strlen($this->height);
             $array = str_split($this->height);
+            $dem = 0;
             for ($i = 0; $i < $lengthstr; $i++) {
                 if (!(int) $array[$i]) {
-                    $this->setError(JText::_('COM_HRM_ERROR'));
-                    return FALSE;
-                    break;
+                    if ($array[$i] != '0') {
+                        $dem ++;
+                    }
                 }
+            }
+            if ($dem != 0) {
+                $this->setError(JText::_('COM_HRM_ERROR'));
+                return FALSE;
             }
         }
         
         if ($this->weight != NULL) {
             $lengthstr = strlen($this->weight);
             $array = str_split($this->weight);
+            $dem = 0;
             for ($i = 0; $i < $lengthstr; $i++) {
                 if (!(int) $array[$i]) {
-                    $this->setError(JText::_('COM_HRM_ERROR'));
-                    return FALSE;
-                    break;
+                    if ($array[$i] != '0') {
+                        $dem ++;
+                    }
                 }
+            }
+            if ($dem != 0) {
+                $this->setError(JText::_('COM_HRM_ERROR'));
+                return FALSE;
             }
         }
 
